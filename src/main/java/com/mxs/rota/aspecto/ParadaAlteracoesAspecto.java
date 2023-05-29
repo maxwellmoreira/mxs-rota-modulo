@@ -106,8 +106,6 @@ public class ParadaAlteracoesAspecto {
         CompletableFuture.runAsync(() -> {
             try {
                 redisTemplate.opsForHash().put(operacaoTipo, codigo, valores);
-                /*var cache = redisTemplate.opsForHash().get(OperacaoTipo.CRIAR_PARADA, codigo);
-                System.out.println("---------------------------> " + cache);*/
             } catch (Exception e) {
             }
         });

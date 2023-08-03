@@ -1,5 +1,6 @@
 package com.mxs.rota.requisicao;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
 
 /**
@@ -7,7 +8,10 @@ import lombok.Builder;
  */
 @Builder
 public record RotaControladorObterRequisicao(
+        @JsonProperty("codigo")
         String codigo,
+        @JsonProperty("data")
         String data,
+        @JsonProperty("status_rota")
         String statusRota) {
 }

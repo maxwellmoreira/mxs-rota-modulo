@@ -13,6 +13,18 @@ services:
 
   #-----------------------------------------------------------
 
+  phpredisadmin:
+    image: erikdubbelboer/phpredisadmin
+    container_name: php_redis_admin
+    ports:
+      - 8082:80
+    environment:
+      - REDIS_1_HOST=redis
+      - REDIS_1_PORT=6379
+      - REDIS_1_AUTH=mxs
+
+  #-----------------------------------------------------------
+
   pg-sql:
     image: postgres:12.2
     container_name: postgre_sql
@@ -85,6 +97,28 @@ services:
 
 #-----------------------------------------------------------
 
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./volumes/prometheus-data:/etc/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: always
+
+#-----------------------------------------------------------
+
+    grafana:
+      image: grafana/grafana
+      ports:
+        - 3000:3000
+      volumes:
+        - ./grafana:/var/lib/grafana
+      restart: always
+
+#-----------------------------------------------------------
+
 networks:
   rabbit_mq_net:
     driver: bridge
@@ -95,3 +129,4 @@ volumes:
   pgsql-data:
   pgadmin-data:
   rabbitmq-data:
+  prometheus-data:

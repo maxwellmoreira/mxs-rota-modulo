@@ -33,6 +33,6 @@ public final class ParadaModelo extends AuditoriaModelo {
     @JoinColumn(name = "rota_id", nullable = false)
     private RotaModelo rotaModelo;
     @ManyToOne
-    @JoinColumn(name = "entregador_id", nullable = false)
+    @JoinColumn(name = "entregador_id")
     private EntregadorModelo entregadorModelo;
 }

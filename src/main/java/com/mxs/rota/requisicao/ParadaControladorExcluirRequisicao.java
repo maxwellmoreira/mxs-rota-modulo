@@ -1,5 +1,6 @@
 package com.mxs.rota.requisicao;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 
@@ -9,5 +10,6 @@ import lombok.Builder;
 @Builder
 public record ParadaControladorExcluirRequisicao(
         @NotBlank(message = "Código da parada é de preenchimento obrigatório")
+        @JsonProperty("codigo")
         String codigo) {
 }
